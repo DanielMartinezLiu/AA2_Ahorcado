@@ -110,9 +110,9 @@ class MainActivity : AppCompatActivity()
     private fun ShowEndMessage(hasWon: Boolean)
     {
         if (hasWon)
-            hangedManWord.text = "You Win!"
+            hangedManWord.text = getString(R.string.win_text)
         else
-            hangedManWord.text = "You Lose!"
+            hangedManWord.text = getString(R.string.lose_text)
         DisableKeyboard()
     }
 

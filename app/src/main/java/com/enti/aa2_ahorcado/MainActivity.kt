@@ -1,21 +1,29 @@
 package com.enti.aa2_ahorcado
 
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.GridLayout;
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity()
 {
+    val ANIM_START_DURATION: Int = 2500
+    val ANIM_END_DURATION: Int = 5000
+
     // Componentes UI
     private lateinit var hangedManImage: ImageView
     private lateinit var hangedManWord: TextView
-    private lateinit var keyboard: GridLayout
+    private lateinit var keyboardTop: LinearLayout
+    private lateinit var keyboardMiddle: LinearLayout
+    private lateinit var keyboardBottom: LinearLayout
+    private lateinit var constraintLayout: ConstraintLayout
 
     // Lógica del juego
     private var wordToGuess: String = "ME QUIERO MORIR"
@@ -41,7 +49,12 @@ class MainActivity : AppCompatActivity()
         setContentView(R.layout.activity_main)
 
         InitUI()
-        InitKeyboard()
+
+        InitAnimationDrawable()
+
+        InitKeyboard(keyboardTop)
+        InitKeyboard(keyboardMiddle)
+        InitKeyboard(keyboardBottom)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.hangedManMain)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -51,17 +64,30 @@ class MainActivity : AppCompatActivity()
 
         UpdateUI()
     }
+
     private fun InitUI()
     {
         hangedManImage = findViewById(R.id.hangedManImage)
         hangedManWord = findViewById(R.id.hangedManWord)
-        keyboard = findViewById(R.id.keyboard)
+        keyboardTop = findViewById(R.id.keyboardTop)
+        keyboardMiddle = findViewById(R.id.keyboardMiddle)
+        keyboardBottom = findViewById(R.id.keyboardBottom)
+        constraintLayout = findViewById(R.id.hangedManMain)
     }
-    private fun InitKeyboard()
+    private fun InitAnimationDrawable() {
+        val background = constraintLayout.background
+        if (background is AnimationDrawable) {
+            val animDrawable: AnimationDrawable = background
+            animDrawable.setEnterFadeDuration(ANIM_START_DURATION)
+            animDrawable.setExitFadeDuration(ANIM_END_DURATION)
+            animDrawable.start()
+        }
+    }
+    private fun InitKeyboard(layout: LinearLayout)
     {
-        for (i in 0 until keyboard.childCount)
+        for (i in 0 until layout.childCount)
         {
-            (keyboard.getChildAt(i) as? Button)?.let { button ->
+            (layout.getChildAt(i) as? Button)?.let { button ->
                 button.setOnClickListener { HandleGuess(button.text[0], button) }
             }
         }
@@ -113,14 +139,17 @@ class MainActivity : AppCompatActivity()
             hangedManWord.text = getString(R.string.win_text)
         else
             hangedManWord.text = getString(R.string.lose_text)
-        DisableKeyboard()
+
+        DisableKeyboard(keyboardTop)
+        DisableKeyboard(keyboardMiddle)
+        DisableKeyboard(keyboardBottom)
     }
 
-    private fun DisableKeyboard()
+    private fun DisableKeyboard(layout: LinearLayout)
     {
-        for (i in 0 until keyboard.childCount)
+        for (i in 0 until layout.childCount)
         {
-            keyboard.getChildAt(i).isEnabled = false
+            layout.getChildAt(i).isEnabled = false
         }
     }
 }

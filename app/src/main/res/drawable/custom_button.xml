@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Normal State -->
+    <item android:state_enabled="true" android:drawable="@drawable/custom_button_active"/>
+
+    <!-- Hover State -->
+    <item android:state_hovered="true" android:drawable="@drawable/custom_button_pressed"/>
+
+    <!-- Disabled State -->
+    <item android:state_enabled="false" android:drawable="@drawable/custom_button_disabled"/>
+
+</selector>

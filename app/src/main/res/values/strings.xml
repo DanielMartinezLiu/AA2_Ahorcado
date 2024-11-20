@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">AA2_Ahorcado</string>
+    <string name="app_name">AA2_HangedMan</string>
+    <string name="win_text">You Win!</string>
+    <string name="lose_text">You Lose!</string>
+    <string name="hangman_description">HangedMan</string>
+
 </resources>

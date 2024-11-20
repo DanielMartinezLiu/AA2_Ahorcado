@@ -9,8 +9,6 @@ import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity()
 {
@@ -26,7 +24,7 @@ class MainActivity : AppCompatActivity()
     private lateinit var constraintLayout: ConstraintLayout
 
     // Lógica del juego
-    private var wordToGuess: String = "ME QUIERO MORIR"
+    private var wordToGuess: String = "TEST"
     private var currentWordState = wordToGuess.map { if (it == ' ') ' ' else '_' }.toCharArray()
     private var incorrectGuesses: Int = 0
     private val maxIncorrectGuesses = 6
@@ -55,13 +53,6 @@ class MainActivity : AppCompatActivity()
         InitKeyboard(keyboardTop)
         InitKeyboard(keyboardMiddle)
         InitKeyboard(keyboardBottom)
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.hangedManMain)) { view, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
         UpdateUI()
     }
 
@@ -76,7 +67,8 @@ class MainActivity : AppCompatActivity()
     }
     private fun InitAnimationDrawable() {
         val background = constraintLayout.background
-        if (background is AnimationDrawable) {
+        if (background is AnimationDrawable)
+        {
             val animDrawable: AnimationDrawable = background
             animDrawable.setEnterFadeDuration(ANIM_START_DURATION)
             animDrawable.setExitFadeDuration(ANIM_END_DURATION)
@@ -151,5 +143,10 @@ class MainActivity : AppCompatActivity()
         {
             layout.getChildAt(i).isEnabled = false
         }
+    }
+
+    public fun SetWordToGuess(text: String)
+    {
+        wordToGuess = text;
     }
 }

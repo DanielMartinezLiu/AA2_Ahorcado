@@ -1,20 +1,19 @@
 package com.enti.dani_pau_marc
 
-import android.graphics.drawable.AnimationDrawable
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.LinearLayout
+import android.widget.Switch
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 
-
 class HangedMan : AppCompatActivity() {
-    val ANIM_START_DURATION: Int = 2500
-    val ANIM_END_DURATION: Int = 5000
-
     // Componentes UI
     private lateinit var hangedManImage: ImageView
     private lateinit var hangedManWord: TextView
@@ -22,12 +21,20 @@ class HangedMan : AppCompatActivity() {
     private lateinit var keyboardMiddle: LinearLayout
     private lateinit var keyboardBottom: LinearLayout
     private lateinit var constraintLayout: ConstraintLayout
+    private lateinit var themeSwitch: Switch
+
+    // Cambio de tema
+    private var nightMode : Boolean = false
+    private lateinit var sharedPreferences : SharedPreferences
+    private lateinit var editor : SharedPreferences.Editor
+
 
     // Lógica del juego
     private var wordToGuess: String = "TEST"
-    private var currentWordState = wordToGuess.map { if (it == ' ') ' ' else '_' }.toCharArray()
+    private var currentWordState: CharArray = wordToGuess.map { if (it == ' ') ' ' else '_' }.toCharArray()
     private var incorrectGuesses: Int = 0
-    private val maxIncorrectGuesses = 6
+
+    private val MAX_INCORRECT_GUESSES: Int = 6
 
     // Imagenes
     private val images = listOf(
@@ -48,36 +55,46 @@ class HangedMan : AppCompatActivity() {
 
         InitUI()
 
-        InitAnimationDrawable()
-
         InitKeyboard(keyboardTop)
         InitKeyboard(keyboardMiddle)
         InitKeyboard(keyboardBottom)
         UpdateUI()
     }
 
+    private fun SwitchTheme()
+    {
+        supportActionBar?.hide();
+        themeSwitch = findViewById(R.id.themeSwitch);
+        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+        nightMode = sharedPreferences.getBoolean("night", false);
+
+        if (nightMode)
+        {
+            themeSwitch.isChecked = true;
+        }
+
+        themeSwitch.setOnClickListener {
+            nightMode = !nightMode
+            sharedPreferences.edit().putBoolean("night", nightMode).apply()
+
+            if (nightMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+    }
+
     private fun InitUI()
     {
-        /*
         hangedManImage = findViewById(R.id.hangedManImage)
         hangedManWord = findViewById(R.id.hangedManWord)
         keyboardTop = findViewById(R.id.keyboardTop)
         keyboardMiddle = findViewById(R.id.keyboardMiddle)
         keyboardBottom = findViewById(R.id.keyboardBottom)
         constraintLayout = findViewById(R.id.hangedManMain)
-        */
+    }
 
-    }
-    private fun InitAnimationDrawable() {
-        val background = constraintLayout.background
-        if (background is AnimationDrawable)
-        {
-            val animDrawable: AnimationDrawable = background
-            animDrawable.setEnterFadeDuration(ANIM_START_DURATION)
-            animDrawable.setExitFadeDuration(ANIM_END_DURATION)
-            animDrawable.start()
-        }
-    }
     private fun InitKeyboard(layout: LinearLayout)
     {
         for (i in 0 until layout.childCount)
@@ -118,7 +135,7 @@ class HangedMan : AppCompatActivity() {
     {
         incorrectGuesses++
         UpdateUI()
-        if (incorrectGuesses == maxIncorrectGuesses)
+        if (incorrectGuesses == MAX_INCORRECT_GUESSES)
             ShowEndMessage(false)
     }
 

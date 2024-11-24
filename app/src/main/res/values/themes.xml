@@ -2,6 +2,11 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.HangedMan" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
+        <item name="backgroundColor">@color/background_color_1_light</item>
+        <item name="background">@color/background_color_2_light</item>
+        <item name="headerLayout">@color/header_background_light</item>
+        <item name="textFillColor">@color/text_color_light</item>
+
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 

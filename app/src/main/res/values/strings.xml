@@ -3,4 +3,9 @@
     <string name="win_text">You Win!</string>
     <string name="lose_text">You Lose!</string>
     <string name="hangman_description">HangedMan</string>
+    <string name="word_recycle_view">Word: </string>
+    <string name="letter_recycle_view">Letters: </string>
+    <string name="ekko">EKKO</string>
+    <string name="arcane">ARCANE</string>
+    <string name="heimerdinger">HEIMERDINGER</string>
 </resources>

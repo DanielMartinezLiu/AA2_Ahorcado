@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AA2_Ahorcado</string>
+    <string name="theme_switch">Cambiar Tema</string>
+    <string name="win_text">Has Ganado!</string>
+    <string name="lose_text">Has Perdido!</string>
+    <string name="hangman_description">Ahorcado</string>
+    <string name="tap_continue">Presiona para continuar</string>
+    <string name="word_recycle_view">Palabra: </string>
+    <string name="letter_recycle_view">Letras: </string>
+    <string name="ekko">EKKO</string>
+    <string name="arcane">ARCANE</string>
+    <string name="heimerdinger">HEIMERDINGER</string>
+</resources>

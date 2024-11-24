@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">AA2_Ahorcado</string>
-    <string name="win_text">Has Ganado!</string>
-    <string name="lose_text">Has Perdido!</string>
-    <string name="hangman_description">HangedMan</string>
-</resources>

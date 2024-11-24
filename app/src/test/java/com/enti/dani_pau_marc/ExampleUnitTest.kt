@@ -1,4 +1,4 @@
-package com.enti.aa2_ahorcado
+package com.enti.dani_pau_marc
 
 import org.junit.Test
 

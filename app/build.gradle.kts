@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.enti.aa2_ahorcado"
+    namespace = "com.enti.dani_pau_marc"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.enti.aa2_ahorcado"
+        applicationId = "com.enti.dani_pau_marc"
         minSdk = 27
         targetSdk = 34
         versionCode = 1
@@ -27,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
 }
 

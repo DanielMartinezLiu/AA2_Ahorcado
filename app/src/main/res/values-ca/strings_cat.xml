@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">AA2_Penjat</string>
-    <string name="win_text">Has Guanyat!</string>
-    <string name="lose_text">Has Perdut!</string>
-    <string name="hangman_description">HangedMan</string>
-</resources>

@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Background -->
+    <color name="background_color_1_light">#F9F9F9</color>
+    <color name="background_color_2_light">#CCE7F0</color>
+    <color name="background_color_1_dark">#1A1A1A</color>
+    <color name="background_color_2_dark">#2E3A4A</color>
+
+    <!-- Header -->
+    <color name="header_background_light">#6200EE</color>
+    <color name="header_background_dark">#3700B3</color>
+
+    <!-- Buttons -->
+    <color name="button_color_normal">#FF0D95</color>
+    <color name="button_color_pressed">#9B00B5</color>
+    <color name="button_color_border">#000</color>
+    <color name="button_color_disabled">#A1A1A1</color>
+
+    <!-- Text Color -->
+    <color name="text_color_light">#000</color>
+    <color name="text_color_dark">#FFF</color>
+
+    <color name="instructions_color">#FFEB3B</color>
+    <color name="divider_color">#757575</color>
+    <color name="error_color">#B71C1C</color>
+    <color name="success_color">#388E3C</color>
+
 </resources>

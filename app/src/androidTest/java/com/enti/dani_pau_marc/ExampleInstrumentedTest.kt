@@ -1,4 +1,4 @@
-package com.enti.aa2_ahorcado
+package com.enti.dani_pau_marc
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.enti.aa2_ahorcado", appContext.packageName)
+        assertEquals("com.enti.dani_pau_marc", appContext.packageName)
     }
 }

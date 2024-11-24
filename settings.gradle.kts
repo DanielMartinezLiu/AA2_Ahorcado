@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AA2_Ahorcado"
+rootProject.name = "HangedMan"
 include(":app")
+ 

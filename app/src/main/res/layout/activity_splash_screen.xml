@@ -5,10 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/background"
     tools:context=".SplashScreenActivity">
-
-
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/wave"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
     <LinearLayout
         android:id="@+id/SplashScreenLayout"
         android:layout_width="match_parent"
@@ -24,7 +28,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/app_name"
-            android:textSize="43sp"></TextView>
+            android:textColor="?attr/textFillColor"
+            android:textSize="43sp"/>
 
         <ImageView
             android:id="@+id/mainImage"
@@ -40,10 +45,10 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/tap_continue"
+            android:textColor="?attr/textFillColor"
             android:textSize="24sp"
             android:layout_marginTop="150dp"
-            ></TextView>
-
+            />
     </LinearLayout>
 
     <Button

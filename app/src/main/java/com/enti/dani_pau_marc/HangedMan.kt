@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.LinearLayout
-import android.widget.Switch
+import androidx.appcompat.widget.SwitchCompat
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -21,7 +21,7 @@ class HangedMan : AppCompatActivity() {
     private lateinit var keyboardMiddle: LinearLayout
     private lateinit var keyboardBottom: LinearLayout
     private lateinit var constraintLayout: ConstraintLayout
-    private lateinit var themeSwitch: Switch
+    private lateinit var themeSwitch: SwitchCompat
 
     // Cambio de tema
     private var nightMode : Boolean = false
@@ -31,7 +31,7 @@ class HangedMan : AppCompatActivity() {
 
     // Lógica del juego
     private var wordToGuess: String = "TEST"
-    private var currentWordState: CharArray = wordToGuess.map { if (it == ' ') ' ' else '_' }.toCharArray()
+    private lateinit var currentWordState: CharArray;
     private var incorrectGuesses: Int = 0
 
     private val MAX_INCORRECT_GUESSES: Int = 6
@@ -51,9 +51,15 @@ class HangedMan : AppCompatActivity() {
     {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_hanged_man)
+
+        val wordToGuessFromIntent = intent.getStringExtra("level_word")
+        wordToGuessFromIntent?.let {
+            SetWordToGuess(it)
+        }
 
         InitUI()
+        SwitchTheme()
 
         InitKeyboard(keyboardTop)
         InitKeyboard(keyboardMiddle)
@@ -165,9 +171,10 @@ class HangedMan : AppCompatActivity() {
         }
     }
 
-    public fun SetWordToGuess(text: String)
+    private fun SetWordToGuess(text: String)
     {
         wordToGuess = text;
+        currentWordState = wordToGuess.map { if (it == ' ') ' ' else '_' }.toCharArray()
     }
 
 }

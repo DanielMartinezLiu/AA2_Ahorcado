@@ -24,7 +24,7 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     fun ChangeActivity(){
-        startActivity(Intent(this, MainActivity::class.java));
+        startActivity(Intent(this, SelectorLevelActivity::class.java));
     }
 
 }
